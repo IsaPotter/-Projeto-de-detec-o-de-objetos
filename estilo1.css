@@ -1,0 +1,329 @@
+/* Estilos para o menu lateral (sidebar) */
+/* Estilos para o menu lateral (sidebar) */
+.sidebar {
+    width: 280px;
+    height: 100%;
+    background-color: var(--sidebar-bg);
+    position: fixed; 
+    top: 0;
+    left: -280px; /* Esconde o menu fora da tela */
+    box-shadow: 4px 0px 25px var(--sidebar-shadow);
+    z-index: 1000;
+    transition: left 0.5s ease-in-out; /* Adiciona uma animação suave */
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.hamburguer{
+    width: 2rem;
+    height: 2rem;
+    position: absolute; /* Posição relativa ao cabeçalho */
+    z-index: 1010;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+
+}
+
+.header-controls {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-icon {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.theme-select {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.show-menu.sidebar {
+    left: 0; /* Traz o menu para a tela */
+}
+
+.show-menu.hamburguer{
+    left: calc(280px + 1rem);
+}
+
+.line{
+    width: 100%;
+    height: .1rem;
+    background-color: #212529;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+/* Animação do Hambúrguer para "X" */
+.show-menu #line1 {
+    transform: translateY(0.55rem) rotate(45deg);
+}
+
+.show-menu #line2 {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.show-menu #line3 {
+    transform: translateY(-0.55rem) rotate(-45deg);
+}
+
+.menu{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+.menu-item{
+    text-align: center;
+    margin-bottom: .5rem;
+}
+.menu-link{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Mesma fonte do site */
+    font-size: 1.25rem;
+    color: #333;
+    padding: 0.5rem 1rem;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-link.active,
+.menu-link:hover{
+    color: #ffffff;
+    background-color: #e9ecef;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.social-media{
+    margin-top: auto; /* Empurra para o final */
+    padding-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.social-media i{
+    background-color: transparent;
+    color: #555;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 1s;
+}
+
+.social-media i:hover{
+    color: #6a82fb;
+}
+
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.page-overlay.show-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Botão de Logout no Menu */
+.btn-logout {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #e9ecef;
+    color: #dc3545;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background: #e9ecef;
+    border-color: #dc3545;
+}
+
+body.dark-mode .btn-logout {
+    border-color: var(--border-color);
+    color: #ff7b7b;
+}
+
+body.dark-mode .btn-logout:hover {
+    background: var(--border-color);
+    border-color: #ff7b7b;
+}
+
+/* Estilos para a página de perfil */
+.profile-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+.form-select {
+    display: inline-block;
+    width: auto;
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Esconde visualmente o label, mas o mantém para leitores de tela */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Zona de Perigo */
+.danger-zone {
+    border-color: #dc3545;
+}
+.danger-zone .card-title {
+    color: #dc3545;
+}
+
+/* Log de Atividades */
+.activity-log {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.activity-log li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.activity-log li:last-child {
+    border-bottom: none;
+}
+
+body.dark-mode .activity-log li {
+    border-bottom-color: var(--border-color);
+}
+
+/* Controles de Paginação */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination-controls button {
+    background-color: var(--btn-light-bg);
+    color: var(--btn-light-text);
+    border: 1px solid var(--btn-light-border);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Estilos para o Modal de Pagamento */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: animatetop 0.4s;
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: .2em;
+}

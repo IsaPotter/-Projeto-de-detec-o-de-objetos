@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.644 11.094a.5.5 0 0 1 .356-.15h2a.5.5 0 0 1 .356.15c.175.177.39.347.603.496a7 7 0 0 0 .752.456l.01.006h.003A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.224-.947l.002-.001.01-.006a4 4 0 0 0 .214-.116 8 8 0 0 0 .539-.34c.214-.15.428-.319.603-.496M7 6.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0'/%3E%3Cpath d='M2 3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm6 1.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4M12.5 7a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1'/%3E%3C/svg%3E">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Perguntas Frequentes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Ajuste para o menu empurrar o conteúdo */
+        .sidebar.show-menu + .page-wrapper {
+            margin-left: 280px; /* Largura exata do sidebar */
+            transition: margin-left 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="hamburguer">
+            <div class="line" id="line1"></div>
+            <div class="line" id="line2"></div>
+            <div class="line" id="line3"></div>
+        </div>
+        <a href="index.html" class="header-title">Detecção de Objetos</a>
+        <div class="header-controls">
+            <label for="theme-select" class="visually-hidden">Selecionar Tema</label>
+            <i class="bi bi-palette-fill theme-icon"></i>
+            <select id="theme-select" class="form-select theme-select">
+                <option value="light">Claro</option>
+                <option value="dark">Escuro</option>
+                <option value="high-contrast">Alto Contraste</option>
+            </select>
+        </div>
+    </header>
+    <aside class="sidebar">
+        <nav>
+            <ul class="menu">
+                <li class="menu-item"><a href="index.html" class="menu-link"><i class="bi bi-house-door-fill me-2"></i>Início</a></li>
+                <li class="menu-item"><a href="sobre.html" class="menu-link"><i class="bi bi-info-circle-fill me-2"></i>Sobre</a></li>
+                <li class="menu-item"><a href="faq.html" class="menu-link active"><i class="bi bi-question-circle-fill me-2"></i>FAQ</a></li>
+                <li class="menu-item"><a href="politica.html" class="menu-link"><i class="bi bi-shield-lock-fill me-2"></i>Privacidade</a></li>
+                <li class="menu-item"><a href="assinatura.html" class="menu-link"><i class="bi bi-star-fill me-2"></i>Assinatura</a></li>
+                <li class="menu-item"><a href="login.html" class="menu-link"><i class="bi bi-person-circle me-2"></i>Login</a></li>
+            </ul>
+        </nav>
+        <div class="social-media">
+            <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        </div>
+    </aside>
+
+    <!-- Conteúdo -->
+    <div class="page-wrapper">
+        <div class="container">
+                            <div class="accordion" id="faqAccordion">
+                                <!-- Pergunta 1 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-download me-2 text-primary"></i>
+                                            Preciso instalar algo?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">Não! Tudo funciona direto do navegador. Basta acessar o site e permitir o acesso à webcam quando solicitado.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 2 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-lock me-2 text-primary"></i>
+                                            Meus dados ficam salvos?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">Não. Nenhuma imagem ou vídeo é enviado para servidores. Todo o processamento acontece localmente no seu navegador, garantindo total privacidade.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 3 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-eye me-2 text-primary"></i>
+                                            Quais objetos posso detectar?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p>Mais de 80 tipos, incluindo:</p>
+                                            <ul>
+                                                <li>Pessoas e animais (cachorro, gato, pássaro, etc.)</li>
+                                                <li>Veículos (carro, ônibus, caminhão, bicicleta, moto)</li>
+                                                <li>Eletrônicos (celular, notebook, TV, teclado, mouse)</li>
+                                                <li>Objetos do dia a dia (copo, garrafa, livro, relógio)</li>
+                                                <li>Móveis (sofá, cadeira, mesa, cama)</li>
+                                                <li>Alimentos (frutas, sanduíche, pizza)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 4 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-browser-chrome me-2 text-primary"></i>
+                                            Qual navegador devo usar?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">O site funciona melhor em navegadores modernos como Google Chrome, Firefox, Edge e Safari. Recomendamos usar a versão mais atualizada do seu navegador preferido para melhor desempenho.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 5 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-speedometer2 me-2 text-primary"></i>
+                                            A detecção está lenta, o que fazer?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p>Se a detecção estiver lenta, tente:</p>
+                                            <ul class="mb-0">
+                                                <li>Fechar outras abas e programas</li>
+                                                <li>Usar um navegador atualizado</li>
+                                                <li>Garantir boa iluminação no ambiente</li>
+                                                <li>Manter objetos a uma distância adequada da câmera</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 6 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-webcam me-2 text-primary"></i>
+                                            A webcam não está funcionando
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p>Verifique se:</p>
+                                            <ul class="mb-0">
+                                                <li>Você permitiu o acesso à câmera quando solicitado</li>
+                                                <li>Sua webcam está conectada e funcionando</li>
+                                                <li>Nenhum outro programa está usando a câmera</li>
+                                                <li>As configurações de privacidade do navegador permitem acesso à câmera</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 7 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-phone me-2 text-primary"></i>
+                                            Funciona no celular?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">Sim! O site é totalmente responsivo e funciona em smartphones e tablets. Basta acessar pelo navegador móvel e permitir o acesso à câmera quando solicitado.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 8 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-code-slash me-2 text-primary"></i>
+                                            Posso usar o código do projeto?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">Este é um projeto de demonstração educacional. Para uso do código, entre em contato através dos links nas redes sociais no rodapé da página.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 9 - Rastreamento -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-bullseye me-2 text-primary"></i>
+                                            O que é o Rastreamento de Objetos (Plano Premium)?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">É uma função avançada que permite selecionar um objeto detectado e acompanhá-lo continuamente no vídeo. O sistema atribui um ID único ao objeto e o segue de um quadro para o outro, mesmo que ele se mova ou seja momentaneamente obstruído. É ideal para monitorar itens ou pessoas específicas em tempo real.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 10 - Exportação -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-file-earmark-spreadsheet me-2 text-primary"></i>
+                                            Como funciona a Exportação de Dados (Plano Premium)?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">Assinantes Premium podem exportar o histórico de detecções para um arquivo no formato CSV. Este arquivo pode ser aberto em programas como Excel ou Google Sheets e contém informações como o tipo de objeto detectado, a data, a hora e a confiança da detecção. É perfeito para criar relatórios e análises de dados.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 11 - OCR -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-fonts me-2 text-primary"></i>
+                                            O que é a Detecção de Texto/OCR (Plano Empresarial)?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">OCR (Reconhecimento Óptico de Caracteres) é uma tecnologia que permite ao nosso sistema "ler" e extrair texto de imagens. Com o Plano Empresarial, você pode usar a detecção para identificar textos em placas, documentos, embalagens e muito mais, integrando esses dados aos seus sistemas através da nossa API.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pergunta 12 - Relatórios e Alertas -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button">
+                                            <i class="bi bi-graph-up-arrow me-2 text-primary"></i>
+                                            O que são os Relatórios e Alertas (Plano Empresarial)?
+                                        </button>
+                                    </h2>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body-content">
+                                            <p class="mb-0">Assinantes do plano Empresarial podem gerar relatórios detalhados (semanais/mensais) em PDF com gráficos e dados sobre as detecções. Além disso, é possível configurar alertas por e-mail para serem notificados em tempo real sempre que um objeto de interesse for detectado, ideal para monitoramento de segurança ou controle de inventário.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info mt-4">
+                                <h6 class="mb-2"><i class="bi bi-info-circle me-2"></i>Ainda tem dúvidas?</h6>
+                                <p class="mb-0">Entre em contato através das redes sociais disponíveis no rodapé do site!</p>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="index.html" class="btn btn-primary mt-4">
+                                    <i class="bi bi-arrow-left me-2"></i>Voltar para o Início
+                                </a>
+                            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <div class="footer-credits">
+                <i class="bi bi-webcam-fill me-2 footer-icon"></i>
+                <span>© 2025 Isabela Paiva Novais. Desenvolvido com TensorFlow.js</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="theme.js"></script>
+    <script src="scrip-menu.js"></script>
+    <script src="faq.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>
