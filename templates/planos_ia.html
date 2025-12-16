@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+    <title>Planos de IA - Escolha sua Assinatura</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #2c3e50;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .planos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .plano-card {
+            background: white;
+            border-radius: 25px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .plano-card:hover {
+            transform: translateY(-10px);
+        }
+        .plano-card.popular::before {
+            content: "MAIS POPULAR";
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        .plano-nome {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .plano-preco {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+        .plano-periodo {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .recursos-lista {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .recursos-lista li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+        .recursos-lista li::before {
+            content: "✓ ";
+            color: #43e97b;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .btn-contratar {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #333;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-contratar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(67,233,123,0.3);
+        }
+        .anual-badge {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/planos">Planos</a></li>
+            <li><a href="/cadastro">Cadastro</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/chat-ia">Chat IA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>💎 Escolha seu Plano de IA</h1>
+            <p>Soluções flexíveis para todas as necessidades</p>
+        </div>
+
+        <div class="planos-grid">
+            {% for id, plano in planos.items() %}
+            <div class="plano-card {% if id == '2' %}popular{% endif %}">
+                <div class="plano-nome">
+                    {{ plano.nome }}
+                    {% if plano.tipo == 'anual' %}
+                    <span class="anual-badge">2 MESES GRÁTIS</span>
+                    {% endif %}
+                </div>
+                <div class="plano-preco">R$ {{ "%.2f"|format(plano.preco) }}</div>
+                <div class="plano-periodo">por {{ plano.tipo }}</div>
+                
+                <ul class="recursos-lista">
+                    {% for recurso in plano.recursos %}
+                    <li>{{ recurso }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <button class="btn-contratar" onclick="contratarPlano('{{ id }}')">
+                    Contratar Agora
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="text-align: center; color: white;">
+            <h2>🎯 Não sabe qual escolher?</h2>
+            <p>Fale com nosso assistente de IA para encontrar o plano ideal!</p>
+            <br>
+            <a href="/chat-ia" style="display: inline-block; padding: 1rem 2rem; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; border: 2px solid white;">
+                Conversar com IA
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function contratarPlano(planoId) {
+            fetch(`/api/contratar/${planoId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        }
+                    } else {
+                        alert('Erro: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    alert('Erro de conexão. Tente novamente.');
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Loja Virtual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .carrinho-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .vazio {
+            text-align: center;
+            color: #666;
+            padding: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/produtos">Produtos</a></li>
+            <li><a href="/carrinho">Carrinho</a></li>
+            <li><a href="/chat">Chat IA</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>🛒 Seu Carrinho</h1>
+        </div>
+
+        <div class="carrinho-card">
+            {% if carrinho %}
+                {% set total = 0 %}
+                {% for produto_id, quantidade in carrinho.items() %}
+                    {% set produto = produtos[produto_id] %}
+                    {% set subtotal = produto.preco * quantidade %}
+                    {% set total = total + subtotal %}
+                    <div class="item">
+                        <div>
+                            <h4>{{ produto.nome }}</h4>
+                            <p>Quantidade: {{ quantidade }}</p>
+                        </div>
+                        <div>
+                            <strong>R$ {{ "%.2f"|format(subtotal) }}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                <div class="total">
+                    Total: R$ {{ "%.2f"|format(total) }}
+                </div>
+                
+                <button class="btn" onclick="finalizarCompra()">
+                    Finalizar Compra
+                </button>
+            {% else %}
+                <div class="vazio">
+                    <h3>Seu carrinho está vazio</h3>
+                    <p>Adicione produtos para continuar</p>
+                    <br>
+                    <a href="/produtos" class="btn" style="display: inline-block; text-decoration: none;">
+                        Ver Produtos
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function finalizarCompra() {
+            fetch('/api/finalizar')
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.mensagem);
+                    location.reload();
+                });
+        }
+    </script>
+</body>
+</html>

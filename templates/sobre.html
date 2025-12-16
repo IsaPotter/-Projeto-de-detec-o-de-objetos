@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Loja Virtual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .sobre-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #333;
+            margin: 2rem 0 1rem 0;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #43e97b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/produtos">Produtos</a></li>
+            <li><a href="/carrinho">Carrinho</a></li>
+            <li><a href="/chat">Chat IA</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>ℹ️ Sobre Nossa Loja</h1>
+        </div>
+
+        <div class="sobre-card">
+            <h2>🤖 Assistente Virtual Inteligente</h2>
+            <p>Nossa loja virtual conta com um assistente de IA avançado que revoluciona a experiência de compra online. Desenvolvido com tecnologias modernas, oferece suporte personalizado e inteligente para cada cliente.</p>
+
+            <h2>🛍️ Funcionalidades</h2>
+            <ul class="feature-list">
+                <li>Chat inteligente com processamento de linguagem natural</li>
+                <li>Catálogo completo de produtos premium</li>
+                <li>Busca avançada por categoria e nome</li>
+                <li>Carrinho de compras automático</li>
+                <li>Consultas de preço e estoque em tempo real</li>
+                <li>Finalização de pedidos simplificada</li>
+                <li>Interface responsiva e moderna</li>
+            </ul>
+
+            <h2>💡 Tecnologias</h2>
+            <p>Desenvolvido com Python, Flask, HTML5, CSS3 e JavaScript. O assistente utiliza algoritmos de processamento de texto para entender comandos em português natural.</p>
+
+            <h2>🎯 Missão</h2>
+            <p>Proporcionar uma experiência de compra única, combinando a conveniência do e-commerce com a personalização de um atendimento humano através da inteligência artificial.</p>
+
+            <h2>📞 Contato</h2>
+            <p>Para dúvidas ou sugestões, utilize nosso chat inteligente disponível 24/7 ou entre em contato através dos canais oficiais.</p>
+        </div>
+    </div>
+</body>
+</html>

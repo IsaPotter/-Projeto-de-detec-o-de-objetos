@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+    <title>Pagamento - Plataforma IA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #2c3e50;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .pagamento-card {
+            background: white;
+            border-radius: 25px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .plano-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .payment-option {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .payment-option:hover {
+            border-color: #ff6b6b;
+            background: #fef7f7;
+        }
+        .payment-option.selected {
+            border-color: #ff6b6b;
+            background: #fef7f7;
+        }
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+        .btn-finalizar {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #333;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .btn-finalizar:hover {
+            transform: translateY(-2px);
+        }
+        .security-info {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .pix-info {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/planos">Planos</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/chat-ia">Chat IA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="pagamento-card">
+            <div class="header">
+                <h1>💳 Finalizar Pagamento</h1>
+                <p>Escolha sua forma de pagamento</p>
+            </div>
+
+            <div class="plano-info">
+                <h3>📋 Resumo do Pedido</h3>
+                <p><strong>Plano:</strong> IA Pro</p>
+                <p><strong>Valor:</strong> R$ 79,90/mês</p>
+                <p><strong>Desconto PIX:</strong> -R$ 4,00</p>
+                <hr style="margin: 1rem 0;">
+                <p><strong>Total:</strong> <span style="color: #ff6b6b; font-size: 1.2rem;">R$ 75,90</span></p>
+            </div>
+
+            <h3>💰 Escolha o meio de pagamento:</h3>
+            <div class="payment-methods">
+                <div class="payment-option" onclick="selectPayment('pix')">
+                    <div class="payment-icon">🔸</div>
+                    <h4>PIX</h4>
+                    <p>5% de desconto</p>
+                    <small>Aprovação instantânea</small>
+                </div>
+                <div class="payment-option" onclick="selectPayment('cartao')">
+                    <div class="payment-icon">💳</div>
+                    <h4>Cartão de Crédito</h4>
+                    <p>Parcelamento disponível</p>
+                    <small>Visa, Master, Elo</small>
+                </div>
+                <div class="payment-option" onclick="selectPayment('boleto')">
+                    <div class="payment-icon">📄</div>
+                    <h4>Boleto</h4>
+                    <p>Vencimento em 3 dias</p>
+                    <small>Aprovação em 1-2 dias</small>
+                </div>
+                <div class="payment-option" onclick="selectPayment('paypal')">
+                    <div class="payment-icon">🅿️</div>
+                    <h4>PayPal</h4>
+                    <p>Segurança internacional</p>
+                    <small>Aprovação instantânea</small>
+                </div>
+            </div>
+
+            <div id="cartao-form" style="display: none;">
+                <h4>💳 Dados do Cartão</h4>
+                <div class="form-group">
+                    <label>Número do Cartão</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Validade</label>
+                        <input type="text" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" maxlength="3">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nome no Cartão</label>
+                    <input type="text" placeholder="Nome como no cartão">
+                </div>
+            </div>
+
+            <div id="pix-info" class="pix-info">
+                <h4>🔸 Pagamento PIX</h4>
+                <p>Após confirmar, você receberá o código PIX para pagamento.</p>
+                <p><strong>Desconto de 5% aplicado!</strong></p>
+            </div>
+
+            <button class="btn-finalizar" onclick="finalizarPagamento()">
+                Confirmar Pagamento
+            </button>
+
+            <div class="security-info">
+                🔒 Pagamento 100% seguro • SSL 256 bits • PCI DSS Compliance
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPayment = '';
+
+        function selectPayment(method) {
+            // Remove seleção anterior
+            document.querySelectorAll('.payment-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Adiciona seleção atual
+            event.target.closest('.payment-option').classList.add('selected');
+            selectedPayment = method;
+
+            // Mostra/esconde formulários
+            document.getElementById('cartao-form').style.display = method === 'cartao' ? 'block' : 'none';
+            document.getElementById('pix-info').style.display = method === 'pix' ? 'block' : 'none';
+        }
+
+        function finalizarPagamento() {
+            if (!selectedPayment) {
+                alert('Por favor, selecione um meio de pagamento.');
+                return;
+            }
+
+            const planoId = window.location.pathname.split('/').pop();
+            const btn = document.querySelector('.btn-finalizar');
+            
+            // Coletar dados do cartão se necessário
+            let dadosPagamento = {};
+            if (selectedPayment === 'cartao') {
+                const form = document.getElementById('cartao-form');
+                const inputs = form.querySelectorAll('input');
+                
+                dadosPagamento = {
+                    numero: inputs[0].value.replace(/\s/g, ''),
+                    validade: inputs[1].value,
+                    cvv: inputs[2].value,
+                    nome: inputs[3].value
+                };
+                
+                if (!dadosPagamento.numero || !dadosPagamento.validade || !dadosPagamento.cvv || !dadosPagamento.nome) {
+                    alert('Preencha todos os dados do cartão.');
+                    return;
+                }
+            }
+            
+            // Desabilitar botão durante processamento
+            btn.disabled = true;
+            btn.textContent = 'Processando pagamento...';
+            
+            fetch('/api/pagamento', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    plano_id: planoId, 
+                    metodo: selectedPayment,
+                    dados_pagamento: dadosPagamento
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let mensagem = data.message;
+                    mensagem += `\n\nValor: R$ ${data.valor_final.toFixed(2)}`;
+                    mensagem += `\nPlano: ${data.plano}`;
+                    
+                    // Detalhes específicos por método
+                    if (data.codigo_pix) {
+                        mensagem += `\nCódigo PIX: ${data.codigo_pix}`;
+                        mensagem += `\nVencimento: ${data.vencimento}`;
+                    }
+                    if (data.transacao_id) {
+                        mensagem += `\nTransação: ${data.transacao_id}`;
+                        mensagem += `\nAutorização: ${data.autorizacao}`;
+                    }
+                    if (data.linha_digitavel) {
+                        mensagem += `\nLinha digitável: ${data.linha_digitavel}`;
+                        mensagem += `\nVencimento: ${data.vencimento}`;
+                    }
+                    if (data.paypal_id) {
+                        mensagem += `\nPayPal ID: ${data.paypal_id}`;
+                    }
+                    
+                    alert(mensagem);
+                    window.location.href = '/dashboard';
+                } else {
+                    alert('Erro: ' + data.error);
+                    btn.disabled = false;
+                    btn.textContent = 'Confirmar Pagamento';
+                }
+            })
+            .catch(error => {
+                alert('Erro de conexão. Tente novamente.');
+                btn.disabled = false;
+                btn.textContent = 'Confirmar Pagamento';
+            });
+        }
+    </script>
+</body>
+</html>

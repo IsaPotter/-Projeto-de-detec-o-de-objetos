@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Minhas Assinaturas IA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #2c3e50;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+        .empty-state h3 {
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/planos">Planos</a></li>
+            <li><a href="/cadastro">Cadastro</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/chat-ia">Chat IA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>📊 Meu Dashboard</h1>
+            <p>Gerencie suas assinaturas de IA</p>
+        </div>
+
+        <div class="dashboard-card">
+            {% if assinaturas %}
+                <h2>Assinaturas Ativas</h2>
+                <!-- Conteúdo das assinaturas aqui -->
+            {% else %}
+                <div class="empty-state">
+                    <h3>Nenhuma assinatura ativa</h3>
+                    <p>Contrate um plano de IA para começar</p>
+                    <br>
+                    <a href="/planos" class="btn">Ver Planos</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

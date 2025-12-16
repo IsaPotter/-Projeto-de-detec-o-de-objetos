@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+    <title>Chat com IA - Assistente Virtual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #2c3e50;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 2rem auto; 
+            background: rgba(255,255,255,0.95); 
+            border-radius: 25px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header { 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white; 
+            padding: 2rem; 
+            text-align: center;
+        }
+        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.9; }
+        .chat-container { 
+            height: 500px; 
+            overflow-y: auto; 
+            padding: 2rem; 
+            background: #f8f9fa;
+        }
+        .message { 
+            margin: 1rem 0; 
+            padding: 1rem 1.5rem; 
+            border-radius: 20px; 
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .user { 
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .bot { 
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #2c3e50;
+            margin-right: auto;
+        }
+        .input-container { 
+            padding: 2rem; 
+            display: flex; 
+            gap: 1rem;
+            background: white;
+        }
+        input { 
+            flex: 1; 
+            padding: 1rem 1.5rem; 
+            border: 2px solid #e9ecef;
+            border-radius: 25px; 
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79,172,254,0.1);
+        }
+        button { 
+            padding: 1rem 2rem; 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white; 
+            border: none; 
+            border-radius: 25px; 
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(238,90,36,0.4);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .suggestions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .suggestion {
+            background: rgba(255,255,255,0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .suggestion:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/planos">Planos</a></li>
+            <li><a href="/cadastro">Cadastro</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/chat-ia">Chat IA</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Assistente de IA</h1>
+            <p>Converse sobre nossos planos e serviços de inteligência artificial</p>
+        </div>
+        <div class="chat-container" id="chat">
+            <div class="message bot">
+                🤖 Olá! Sou o assistente da Plataforma IA. Posso ajudar você a:
+                <br><br>
+                • Conhecer nossos planos de assinatura<br>
+                • Entender nossa tecnologia de IA<br>
+                • Esclarecer dúvidas sobre integração<br>
+                • Informações sobre suporte e pagamento
+                <br><br>
+                Como posso ajudar você hoje?
+            </div>
+            <div class="suggestions">
+                <div class="suggestion" onclick="sendSuggestion('Ver planos disponíveis')">Ver planos</div>
+                <div class="suggestion" onclick="sendSuggestion('Como funciona a IA?')">Como funciona</div>
+                <div class="suggestion" onclick="sendSuggestion('Informações sobre API')">API</div>
+                <div class="suggestion" onclick="sendSuggestion('Formas de pagamento')">Pagamento</div>
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Digite sua pergunta sobre IA..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            input.value = '';
+
+            fetch('/api/chat-ia', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mensagem: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addMessage(data.resposta, 'bot');
+            });
+        }
+
+        function sendSuggestion(text) {
+            addMessage(text, 'user');
+            
+            fetch('/api/chat-ia', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mensagem: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addMessage(data.resposta, 'bot');
+            });
+        }
+
+        function addMessage(text, sender) {
+            const chat = document.getElementById('chat');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

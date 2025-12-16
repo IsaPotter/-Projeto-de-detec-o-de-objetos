@@ -1,0 +1,9 @@
+{
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "python whatsapp_meta.py",
+    "restartPolicyType": "ON_FAILURE"
+  }
+}

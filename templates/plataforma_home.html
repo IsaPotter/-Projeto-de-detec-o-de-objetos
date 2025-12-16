@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+    <title>Plataforma IA - Inteligência Artificial como Serviço</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #2c3e50;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature {
+            background: rgba(255,255,255,0.95);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .pricing-preview {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(0,0,0,0.1);
+        }
+        .pricing-preview h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .price-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .price-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/planos">Planos</a></li>
+            <li><a href="/cadastro">Cadastro</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/chat-ia">Chat IA</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>🤖 Plataforma IA</h1>
+        <p>Inteligência Artificial como Serviço para seu negócio</p>
+        <div class="cta-buttons">
+            <a href="/planos" class="btn btn-primary">Ver Planos</a>
+            <a href="/chat-ia" class="btn btn-secondary">Testar IA Grátis</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">🧠</div>
+            <h3>IA Avançada</h3>
+            <p>Tecnologia de ponta em processamento de linguagem natural e machine learning</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔌</div>
+            <h3>API Robusta</h3>
+            <p>Integração fácil com qualquer sistema através de nossa API REST completa</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Escalável</h3>
+            <p>Cresce com seu negócio, desde startups até grandes corporações</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Seguro</h3>
+            <p>Dados protegidos com criptografia e compliance total com LGPD</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Personalizado</h3>
+            <p>IA treinada especificamente para as necessidades do seu negócio</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Analytics</h3>
+            <p>Relatórios detalhados sobre performance e uso da sua IA</p>
+        </div>
+    </section>
+
+    <section class="pricing-preview">
+        <h2>💎 Planos Flexíveis</h2>
+        <div class="price-cards">
+            <div class="price-card">
+                <h3>IA Básica</h3>
+                <div class="price">R$ 29,90<small>/mês</small></div>
+                <p>Perfeito para começar com IA</p>
+            </div>
+            <div class="price-card">
+                <h3>IA Pro</h3>
+                <div class="price">R$ 79,90<small>/mês</small></div>
+                <p>Para empresas em crescimento</p>
+            </div>
+            <div class="price-card">
+                <h3>IA Enterprise</h3>
+                <div class="price">R$ 199,90<small>/mês</small></div>
+                <p>Solução completa para grandes empresas</p>
+            </div>
+        </div>
+        <br><br>
+        <a href="/planos" class="btn btn-primary">Ver Todos os Planos</a>
+    </section>
+
+    <footer style="background: rgba(0,0,0,0.9); color: white; padding: 2rem; text-align: center; margin-top: 4rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <a href="https://wa.me/5511999999999" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none;" title="WhatsApp">📱</a>
+                <a href="https://www.linkedin.com/in/isabelapaivanovais7" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none;" title="LinkedIn">💼</a>
+                <a href="https://github.com/IsaPotter" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none;" title="GitHub">🐙</a>
+            </div>
+            <p>&copy; 2024 Plataforma IA. Todos os direitos reservados.</p>
+            <p>Transformando negócios com inteligência artificial</p>
+            <p><a href="/privacidade" style="color: #ff6b6b; text-decoration: none;">Política de Privacidade</a></p>
+        </div>
+    </footer>
+</body>
+</html>
