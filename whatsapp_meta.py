@@ -161,7 +161,7 @@ def teste_envio():
 if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 5004))
-    print("🚀 Bot WhatsApp Meta iniciado!")
-    print("📱 Configure o webhook em: https://seudominio.com/webhook")
-    print(f"🔑 Token de verificação: {VERIFY_TOKEN}")
+    print("Bot WhatsApp Meta iniciado!")
+    print("Configure o webhook em: https://seudominio.com/webhook")
+    print(f"Token de verificacao: {VERIFY_TOKEN}")
     app.run(host='0.0.0.0', port=port, debug=False)
